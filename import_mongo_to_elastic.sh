@@ -1,13 +1,20 @@
 #!/bin/bash
 clear
 
-echo
-if [ "$#" -ne 4 ]
-  then
+function help() {
+	echo "/--------------- HELP ---------------------------------"
 	echo "Aby uruchomić skrypt należy podać po poleceniu nazwe bazy oraz nazwe kolekcji z mongo a nastepnie nazwe indexy i typu do elastic"
 	echo "Np."
 	echo "./import_mongo_to_elastic.sh test books test books"
 	echo
+	echo "------------------------------------------------------/"
+  exit 1
+}
+
+echo
+if [ "$#" -ne 4 ]
+  then
+		help
   else
 	echo "Exportowanie danych z bazy $1 z kolekcji $2 ..."
 	mongoexport --db $1 --collection $2 --out .tmp.json

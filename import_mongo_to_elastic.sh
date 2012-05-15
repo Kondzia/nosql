@@ -10,8 +10,12 @@ function help() {
 	echo "------------------------------------------------------/"
   exit 1
 }
+#$1-nazwa_bazy mongo
+#$2-nazwa_kolekcji mongo
+#3-nazwa_indexu elastic
+#4-nazwa_typu elastic
 
-echo
+
 if [ "$#" -ne 4 ]
   then
 		help
@@ -22,7 +26,7 @@ if [ "$#" -ne 4 ]
 	I=0
 	while read; do
 		I=$(($I + 1))
-		curl -XPUT http://localhost:9200/$3/$4/$I -d "$REPLY"
+		curl -X PUT http://localhost:9200/$3/$4/$I -d "$REPLY"
 	done < "top100books.json"
 	echo "Ukończono pomyślnie !"
 	rm .tmp.json

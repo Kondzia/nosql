@@ -36,3 +36,5 @@ echo "Creating new database: "$1"/"$2
 	echo "Ukończono pomyślnie ! "
 
 fi
+
+exit 0

@@ -20,7 +20,7 @@ if [ "$#" -ne 4 ]
   then
 		help
   else
-	echo "Exportowanie danych z bazy $1 z kolekcji $2 ..."
+	echo "Exportowanie danych z bazy $1 z kolekcji $2"
 	mongoexport --db $1 --collection $2 --out .tmp.json
 	echo "Zapisywanie danych do bazy Elasticsearch."
 	I=0
